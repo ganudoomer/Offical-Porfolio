@@ -52,6 +52,9 @@
     .loading-container{text-align:center;color:#e6e6e6}
     .loading-progress{color:#6ee7ff!important}
     .hidden{opacity:0;transition:opacity 0.5s ease}
+    @keyframes fadeInDelay{0%,50%{opacity:0}100%{opacity:0.7}}
+    @keyframes slideInFade{0%{opacity:0;transform:translateY(20px)}60%{opacity:0}100%{opacity:0.95;transform:translateY(0)}}
+    #skipHint:hover{opacity:1!important;transform:scale(1.05)}
   </style>
 
   <!-- Main CSS with async loading for better performance -->
@@ -432,6 +435,41 @@
         <div id="loadingOutput"></div>
       </div>
     </div>
+    <!-- Enhanced skip hint in corner -->
+    <div id="skipHint" style="
+      position: absolute;
+      bottom: 25px;
+      right: 25px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: inherit;
+      backdrop-filter: blur(10px);
+      animation: slideInFade 3s ease-in-out;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    ">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="color: var(--muted); font-size: 0.85rem;">💡</span>
+        <span>Press</span>
+        <kbd style="
+          background: var(--accent);
+          color: var(--bg);
+          border: none;
+          border-radius: 4px;
+          padding: 4px 8px;
+          font-size: 0.8rem;
+          font-weight: bold;
+          min-width: 32px;
+          text-align: center;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        ">ESC</kbd>
+        <span>to skip</span>
+      </div>
+    </div>
   </div>
 
   <!-- Theme Toggle Button -->
@@ -456,11 +494,12 @@
       <pre><code class="language-js">// Welcome to My Digital Space
 const developer = new Portfolio({
   name: 'Sreeganesh',
-  experience: '5+ years',
+  experience: '5+ years working with startups',
   skills: 'Bun, Node.js, TypeScript, PostgreSQL, AWS, Azure, Docker, ' +
           'Kubernetes, Flox, Terraform, Ingest, Prometheus, Grafana, ' +
           'Temporal, Keycloak, Redis, RabbitMQ, Kafka, NestJs',
-  passion: 'Building scalable & resilient cloud systems'
+  passion: 'Building scalable & resilient cloud systems for' + 
+         'Early Stage Startups to reach product–market fit faster.'
 });
 
 developer.code();
@@ -568,6 +607,88 @@ Senior Software Development Engineer</code></pre>
   "experience": "5+ years in production environments"
 }
 </code></pre>
+    </div>
+  </section>
+
+  <!-- WORK EXPERIENCE (Terminal) -->
+  <section id="experience" class="window" data-command="cat work_history.json">
+    <div class="toolbar">
+      <div class="dots">
+        <span class="dot red" onclick="closeWindow(this)" title="Close"></span>
+        <span class="dot yellow" onclick="minimizeWindow(this)" title="Minimize"></span>
+        <span class="dot green" onclick="maximizeWindow(this)" title="Maximize"></span>
+      </div>
+      <div class="title">work_history.json</div>
+      <div class="cmd" aria-label="terminal command">
+        <span class="prompt">$</span>
+        <span class="typed"></span><span class="cursor"></span>
+      </div>
+    </div>
+    <div class="content">
+      <pre><code class="language-json">{
+  "work_experience": [
+    {
+      "company": "Daato - Part of EQS Group",
+      "position": "Senior Software Development Engineer",
+      "duration": "Jan 2024 - Present",
+      "period": "1 yr 9 mos",
+      "location": "Remote",
+      "type": "Full-time",
+      "skills": ["Kubernetes", "DevOps", "+7 skills"],
+      "status": "current",
+      "highlight": "🚀 Leading cloud architecture & DevOps initiatives"
+    },
+    {
+      "company": "Daato - Part of EQS Group", 
+      "position": "Software Development Engineer",
+      "duration": "Oct 2022 - Jan 2024",
+      "period": "1 yr 4 mos",
+      "location": "Berlin, Germany",
+      "type": "Full-time",
+      "skills": ["Skill Development", "Microservices", "+9 skills"],
+      "highlight": "🔧 Built scalable microservices architecture"
+    },
+    {
+      "company": "Shortcastle Technologies",
+      "position": "Software Development Engineer", 
+      "duration": "Jan 2021 - Sep 2022",
+      "period": "1 yr 9 mos",
+      "location": "Singapore",
+      "type": "Full-time", 
+      "skills": ["Skill Development", "Microservices", "+16 skills"],
+      "highlight": "⚡ Developed enterprise-grade solutions"
+    },
+    {
+      "company": "Brototype Malayalam",
+      "position": "Content Creator | Instructor | React | Firebase",
+      "duration": "May 2021 - Jul 2021", 
+      "period": "3 mos",
+      "location": "Kochi, Kerala, India",
+      "type": "Part-time",
+      "achievements": [
+        "📺 Created React.js tutorial series",
+        "📚 Designed complete curriculum", 
+        "🎯 250k+ views on tutorials",
+        "🌟 Collaborated with Brototype Malayalam channel"
+      ],
+      "highlight": "🎓 Teaching & content creation"
+    },
+    {
+      "company": "StackaTech Info Labs Pvt Ltd",
+      "position": "Software Engineer",
+      "duration": "Aug 2020 - Jan 2021",
+      "period": "6 mos", 
+      "location": "Kozhikode, Kerala, India",
+      "type": "Full-time",
+      "skills": ["Skill Development", "SQL", "+1 skill"],
+      "highlight": "🌱 Foundation in software engineering"
+    }
+  ],
+  "total_experience": "5+ years",
+  "global_companies": ["Germany-based", "Singapore-based", "India-based"],
+  "remote_experience": "Current",
+  "teaching_impact": "250k+ students reached"
+}</code></pre>
     </div>
   </section>
 
@@ -679,6 +800,11 @@ master complex concepts through practical examples.
         <div class="card">
           <a href="https://www.linkedin.com/in/sree-ganesh-0986451a0/" target="_blank" style="color:inherit;text-decoration:none">
             LinkedIn
+          </a>
+        </div>
+        <div class="card">
+          <a href="https://x.com/sreeganesh007?s=21&t=55DlzIyAJH-cK7Najo1QaQ" target="_blank" style="color:inherit;text-decoration:none">
+            Twitter/X
           </a>
         </div>
         <div class="card">
@@ -896,7 +1022,8 @@ Teaching: 250k+ views on React tutorials</div>`;
         outputElement.innerHTML += `<div style="color: var(--blue);">
 📧 sreeganesh807@gmail.com
 🔗 linkedin.com/in/sree-ganesh-0986451a0
-🐙 github.com/ganudoomer
+� x.com/sreeganesh007
+�🐙 github.com/ganudoomer
 💻 leetcode.com/u/ganudoomer</div>`;
         return;
       }
@@ -977,19 +1104,48 @@ Teaching: 250k+ views on React tutorials</div>`;
       const loadingCursor = document.getElementById('loadingCursor');
       
       const command = 'curl -s https://sreeganesh.xyz';
+      let loadingSkipped = false;
+      
+      // Function to hide loading screen
+      function hideLoadingScreen() {
+        if (loadingSkipped) return;
+        loadingSkipped = true;
+        
+        loadingScreen.classList.add('hidden');
+        
+        // Remove loading screen completely after transition
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+        }, 500);
+      }
+      
+      // ESC key listener to skip loading
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !loadingSkipped) {
+          console.log('Loading skipped by user');
+          hideLoadingScreen();
+        }
+      });
       
       // Type the command
       async function typeCommand() {
+        if (loadingSkipped) return;
+        
         for (let i = 0; i <= command.length; i++) {
+          if (loadingSkipped) return;
           loadingCommand.textContent = command.substring(0, i);
           await new Promise(resolve => setTimeout(resolve, 50));
         }
+        
+        if (loadingSkipped) return;
         
         // Hide cursor from command line
         loadingCursor.style.display = 'none';
         
         // Simulate curl execution
         await new Promise(resolve => setTimeout(resolve, 800));
+        
+        if (loadingSkipped) return;
         
         // Show loading progress
         const progressSteps = [
@@ -1012,21 +1168,19 @@ Teaching: 250k+ views on React tutorials</div>`;
         ];
         
         for (const step of progressSteps) {
+          if (loadingSkipped) return;
           const div = document.createElement('div');
           div.innerHTML = step;
           loadingOutput.appendChild(div);
           await new Promise(resolve => setTimeout(resolve, 200));
         }
         
+        if (loadingSkipped) return;
+        
         // Wait a bit then hide loading screen
         await new Promise(resolve => setTimeout(resolve, 1000));
         
-        loadingScreen.classList.add('hidden');
-        
-        // Remove loading screen completely after transition
-        setTimeout(() => {
-          loadingScreen.style.display = 'none';
-        }, 500);
+        hideLoadingScreen();
       }
       
       // Start the loading animation
